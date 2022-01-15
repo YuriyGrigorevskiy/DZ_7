@@ -41,8 +41,6 @@ public class TicketPage extends HelpdeskBasePage {
     @FindBy(xpath = "//*[@id='ticket-description']/p")
     WebElement description;
 
-    // todo: остальные поля тикета
-
     public TicketPage() {
         PageFactory.initElements(driver, this);
     }

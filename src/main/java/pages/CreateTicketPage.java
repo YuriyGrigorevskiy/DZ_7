@@ -62,19 +62,17 @@ public class CreateTicketPage extends HelpdeskBasePage {
         setQueue(ticket.getQueue());
         setPriority(ticket.getPriority());
         setEmail(ticket.getSubmitter_email());
-        // todo: заполнение остальных полей
+
         createTicketBtn();
     }
 
     /** Заполнение поля "Summary of the problem" */
     public void setProblemTitle(String text) {
         TicketTitle.sendKeys(text);
-        // todo: заполнить поле
     }
 
     public void setDescriptionIssue(String text) {
         TicketDescription.sendKeys(text);
-        // todo: заполнить поле
     }
 
     public void setDue_on(String text) {
