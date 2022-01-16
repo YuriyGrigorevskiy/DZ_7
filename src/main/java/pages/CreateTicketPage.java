@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import models.Ticket;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -54,6 +55,7 @@ public class CreateTicketPage extends HelpdeskBasePage {
     }
 
     /** Создание тикета */
+    @Step("Создаём тикет")
     public void createTicket(Ticket ticket) {
 
         setProblemTitle(ticket.getTitle());

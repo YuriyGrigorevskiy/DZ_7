@@ -1,10 +1,15 @@
 package web;
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Epic;
 import models.Ticket;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -13,6 +18,7 @@ import pages.*;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+@Epic("Тестирование создания тикета")
 public class HelpdeskUITest {
 
     private WebDriver driver;
@@ -73,8 +79,17 @@ public class HelpdeskUITest {
     }
 
     @AfterTest
+//    public void onTestFailure(ITestResult tr) {
+//        makeScreenshot();
+//    }
     public void close() {
-        // Закрываем все окна браузера и освобождаем ресурсы
         driver.quit();
     }
-}
+    @Attachment(value = "Attachment Screenshot", type = "image/png")
+    public byte[] saveScreenshot(byte[] screenShot) {
+        return screenShot;
+//    public byte[] makeScreenshot() {
+//        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+//    }
+}}
+

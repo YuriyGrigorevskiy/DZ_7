@@ -1,5 +1,6 @@
 package elements;
 
+import io.qameta.allure.Step;
 import models.Ticket;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -30,7 +31,7 @@ public class MainMenu {
     public void logIn(){
         driver.findElement(loginBtn).click();
     }
-
+    @Step("Ищем тикет")
     public void searchTicket(Ticket ticket) {
         setSearch(ticket.getTitle());
         search();
@@ -46,7 +47,7 @@ public class MainMenu {
     public void search() {
         driver.findElement(searchBtn).click();
     }
-
+    @Step("Нажимаем на кнопку регистрации")
     public void jumpOnLoginPage() {
         driver.findElement(loginButtonAfterCreateTicket).click();
     }

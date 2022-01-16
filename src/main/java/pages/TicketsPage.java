@@ -1,5 +1,6 @@
 package pages;
 
+import io.qameta.allure.Step;
 import models.Ticket;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -19,6 +20,7 @@ public class TicketsPage extends HelpdeskBasePage {
     }
 
     /** Ищем строку с тикетом и нажимаем на нее */
+    @Step("Открываем найденный тикет")
     public void openTicket() {
 
         TitleSearch.click();
