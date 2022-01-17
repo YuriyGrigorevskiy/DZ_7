@@ -1,6 +1,9 @@
 package pages;
 
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -30,10 +33,16 @@ public class LoginPage extends HelpdeskBasePage {
      * @param password пароль пользователя
      */
 
-    @Step("Вводим логин и пароль")
+    @Step("Press pass and login")
     public void login(String user, String password) {
         InputName.sendKeys(user);
         InputPassword.sendKeys(password);
         LoginButton.click();
+        makeScreenshot();
+    }
+
+    @Attachment(value = "Attachment Screenshot", type = "image/png")
+    public byte[] makeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

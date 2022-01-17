@@ -1,10 +1,9 @@
 package elements;
 
+import io.qameta.allure.Attachment;
 import io.qameta.allure.Step;
 import models.Ticket;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 
 /** Элемент главного меню */
@@ -31,10 +30,11 @@ public class MainMenu {
     public void logIn(){
         driver.findElement(loginBtn).click();
     }
-    @Step("Ищем тикет")
+    @Step("Search ticket")
     public void searchTicket(Ticket ticket) {
         setSearch(ticket.getTitle());
         search();
+        makeScreenshot();
     }
 
     /* Если после вызова void метода, может потребоваться вызов другого метода этого же класса,
@@ -47,8 +47,13 @@ public class MainMenu {
     public void search() {
         driver.findElement(searchBtn).click();
     }
-    @Step("Нажимаем на кнопку регистрации")
+    @Step("Login in system")
     public void jumpOnLoginPage() {
         driver.findElement(loginButtonAfterCreateTicket).click();
+        makeScreenshot();
+    }
+    @Attachment(value = "Attachment Screenshot", type = "image/png")
+    public byte[] makeScreenshot() {
+        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
     }
 }

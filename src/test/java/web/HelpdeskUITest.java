@@ -1,20 +1,16 @@
 package web;
 
-import io.qameta.allure.Attachment;
+
 import io.qameta.allure.Epic;
 import models.Ticket;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.*;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -74,22 +70,12 @@ public class HelpdeskUITest {
       Assert.assertEquals(findColumn.getPriority(),ticket.getPriority(),"не равны");
       Assert.assertEquals(findColumn.getEmail(),ticket.getSubmitter_email(),"не равны");
       Assert.assertEquals(findColumn.getDescription(),ticket.getDescription(),"не равны");
-
         driver.close();
     }
 
     @AfterTest
-//    public void onTestFailure(ITestResult tr) {
-//        makeScreenshot();
-//    }
     public void close() {
         driver.quit();
     }
-    @Attachment(value = "Attachment Screenshot", type = "image/png")
-    public byte[] saveScreenshot(byte[] screenShot) {
-        return screenShot;
-//    public byte[] makeScreenshot() {
-//        return ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
-//    }
-}}
+}
 
